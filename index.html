@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV de Especialista en Soporte TI | Netflix Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --netflix-red: #E50914;
+            --netflix-black: #141414;
+            --netflix-darkgray: #1f1f1f;
+            --netflix-lightgray: #808080;
+            --netflix-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--netflix-black);
+            color: var(--netflix-white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar estilo Netflix */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: var(--netflix-red);
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Banner Principal / Hero */
+        .hero {
+            height: 85vh;
+            position: relative;
+            background: linear-gradient(to top, var(--netflix-black) 10%, rgba(20,20,20,0.4) 50%, rgba(20,20,20,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 50px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .badge-series {
+            background-color: var(--netflix-red);
+            color: var(--netflix-white);
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #e5e5e5;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-play {
+            background-color: var(--netflix-white);
+            color: var(--netflix-black);
+        }
+
+        .btn-play:hover {
+            opacity: 0.8;
+        }
+
+        .btn-info {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: var(--netflix-white);
+        }
+
+        .btn-info:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+        }
+
+        /* Filas de Contenido (Carruseles) */
+        .row-container {
+            padding: 20px 50px;
+            margin-bottom: 30px;
+        }
+
+        .row-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #e5e5e5;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background-color: var(--netflix-darkgray);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-header-info {
+            font-size: 12px;
+            color: #46d369; /* Verde estilo coincidencia de Netflix */
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--netflix-lightgray);
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-size: 0.85rem;
+            color: #d1d1d1;
+            line-height: 1.4;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 50px 40px 50px;
+        }
+
+        .skill-badge {
+            background-color: var(--netflix-darkgray);
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--netflix-lightgray);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            nav, .row-container, .skills-container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#" class="logo">NETFLIX CV</a>
+        <div class="nav-profile">
+            <span>Soporte TI / Bilingüe</span>
+            <div style="background:var(--netflix-red); width:30px; height:30px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:bold;">TI</div>
+        </div>
+    </nav>
+
+    <!-- BANNER PRINCIPAL (RESUMEN PROFESIONAL) -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge-series">Temporada 6+ · Perfil Profesional</span>
+            <h1 class="hero-title">Especialista en Soporte Técnico e Infraestructura</h1>
+            <p class="hero-description">
+                Especialista en Soporte de TI con más de 6 años de experiencia brindando soporte técnico de nivel 1, 2 y 3, tanto en sitio como en entornos remotos. Sólida experiencia en gestión de tickets, sistemas Windows, Microsoft Office, resolución de problemas de red, operaciones de centros de datos y mantenimiento de servidores, con comunicación eficaz en inglés y español.
+            </p>
+            <div class="hero-buttons">
+                <a href="#experiencia" class="btn btn-play">
+                    ▶ Ver Experiencia
+                </a>
+                <a href="#contacto" class="btn btn-info">
+                    ℹ Habilidades
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FILA 1: EXPERIENCIA LABORAL (Desde la última versión) -->
+    <section class="row-container" id="experiencia">
+        <h2 class="row-title">Trayectoria / Episodios Laborales</h2>
+        <div class="card-grid">
+            
+            <!-- Linde Ecuador -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">99% Coincidencia laboral</div>
+                    <div class="card-title">Especialista en Soporte Técnico</div>
+                    <div class="card-subtitle">Linde Ecuador (Quito) · Ago 2024 - Presente</div>
+                    <p class="card-text">Soporte técnico de nivel 2 y 3 para hardware, software, servidores y centros de datos para todo el Ecuador. Gestión de tickets e inventario y comunicación continua en inglés con equipos globales.</p>
+                </div>
+            </div>
+
+            <!-- Fundación Children International -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Rol Paralelo</div>
+                    <div class="card-title">Profesor de Inglés (Tiempo parcial)</div>
+                    <div class="card-subtitle">Fundación Children International (Quito) · Jul 2024 - Jul 2025</div>
+                    <p class="card-text">Enseñanza de inglés a niños y adolescentes, fortaleciendo el dominio del idioma aplicado diariamente en entornos multinacionales.</p>
+                </div>
+            </div>
+
+            <!-- Yanbal Ecuador -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Experiencia In Situ</div>
+                    <div class="card-title">Soporte Técnico In Situ</div>
+                    <div class="card-subtitle">Yanbal Ecuador (Quito) · May 2023 - Ago 2023</div>
+                    <p class="card-text">Instalación y mantenimiento de hardware y software informático (portátiles, impresoras, servidores). Soporte presencial y remoto a nivel nacional.</p>
+                </div>
+            </div>
+
+            <!-- Embajada de México -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Liderazgo TI</div>
+                    <div class="card-title">Jefe del Departamento de Sistemas</div>
+                    <div class="card-subtitle">Embajada de México en Ecuador (Quito) · Dic 2019 - Oct 2022</div>
+                    <p class="card-text">Administración de servidores de datos y sitio web institucional. Desarrollo de software personalizado y soporte técnico presencial.</p>
+                </div>
+            </div>
+
+            <!-- Escuela Politécnica Nacional -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Investigación</div>
+                    <div class="card-title">Ayudante de Investigación en Desarrollo Web</div>
+                    <div class="card-subtitle">Escuela Politécnica Nacional (Quito) · Abr 2018 - Jun 2019</div>
+                    <p class="card-text">Desarrollo de aplicaciones web con Python y Flask para el análisis de imágenes médicas. Aplicación de redes neuronales convolucionales (CNN) en mamografías.</p>
+                </div>
+            </div>
+
+            <!-- DCA Sistemas -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Inicios / Fundamentos</div>
+                    <div class="card-title">Soporte Técnico IT</div>
+                    <div class="card-subtitle">DCA Sistemas (Quito) · Feb 2017 - Feb 2018</div>
+                    <p class="card-text">Mantenimiento preventivo y correctivo de hardware. Instalación y configuración de componentes de software y hardware.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FILA 2: EDUCACIÓN (Desde el diseño previo) -->
+    <section class="row-container">
+        <h2 class="row-title">Formación Académica (Temporadas de Estudio)</h2>
+        <div class="card-grid">
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Grado Universitario</div>
+                    <div class="card-title">Ingeniería en Sistemas</div>
+                    <div class="card-subtitle">Universidad Israel · 2023</div>
+                    <p class="card-text">Formación superior enfocada en el diseño, desarrollo, administración y seguridad de sistemas informáticos empresariales.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Título Técnico</div>
+                    <div class="card-title">Tecnología en Análisis de Sistemas Informáticos</div>
+                    <div class="card-subtitle">Escuela Politécnica Nacional (EPN) · 2021</div>
+                    <p class="card-text">Especialización en análisis y desarrollo de soluciones tecnológicas eficientes para entornos de alta exigencia.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FILA 3: HABILIDADES TÉCNICAS Y IDIOMAS (Desde el diseño previo) -->
+    <section class="row-container" id="contacto">
+        <h2 class="row-title">Habilidades y Tecnologías Destacadas (Tags)</h2>
+    </section>
+    <div class="skills-container">
+        <div class="skill-badge">Soporte Técnico Nivel 1, 2 y 3</div>
+        <div class="skill-badge">Help Desk & Service Desk</div>
+        <div class="skill-badge">Jira & ServiceNow</div>
+        <div class="skill-badge">Sistemas Windows (7, 10, 11)</div>
+        <div class="skill-badge">Microsoft Office 365</div>
+        <div class="skill-badge">Active Directory</div>
+        <div class="skill-badge">Redes y VPN</div>
+        <div class="skill-badge">Data Center & Servidores</div>
+        <div class="skill-badge">Python / Flask (Básico-Intermedio)</div>
+        <div class="skill-badge">Español (Nativo)</div>
+        <div class="skill-badge">Inglés Avanzado C1 (Global Support)</div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>¿Listo para contratar al próximo protagonista de tu equipo de TI?</p>
+        <p style="margin-top: 10px;">© 2026 - Perfil Profesional adaptado al estilo Netflix.</p>
+    </footer>
+
+</body>
+</html>
