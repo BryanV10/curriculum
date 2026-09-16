@@ -49,6 +49,29 @@
             text-decoration: none;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-switcher {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--netflix-white);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .lang-switcher:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--netflix-white);
+        }
+
         .nav-profile {
             display: flex;
             align-items: center;
@@ -233,6 +256,9 @@
                 padding-left: 20px;
                 padding-right: 20px;
             }
+            nav {
+                padding: 15px 20px;
+            }
         }
     </style>
 </head>
@@ -241,148 +267,309 @@
     <!-- NAVBAR -->
     <nav>
         <a href="#" class="logo">NETFLIX CV</a>
-        <div class="nav-profile">
-            <span>Soporte TI / Bilingüe</span>
-            <div style="background:var(--netflix-red); width:30px; height:30px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:bold;">TI</div>
+        <div class="nav-right">
+            <button class="lang-switcher" id="langToggle" onclick="toggleLanguage()">🌐 EN</button>
+            <div class="nav-profile">
+                <span data-i18n="nav_role">Soporte TI / Bilingüe</span>
+                <div style="background:var(--netflix-red); width:30px; height:30px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:bold;">TI</div>
+            </div>
         </div>
     </nav>
 
     <!-- BANNER PRINCIPAL (RESUMEN PROFESIONAL) -->
     <header class="hero">
         <div class="hero-content">
-            <span class="badge-series">Temporada 6+ · Perfil Profesional</span>
-            <h1 class="hero-title">Especialista en Soporte Técnico e Infraestructura</h1>
-            <p class="hero-description">
+            <span class="badge-series" data-i18n="hero_badge">Temporada 6+ · Perfil Profesional</span>
+            <h1 class="hero-title" data-i18n="hero_title">Especialista en Soporte Técnico e Infraestructura</h1>
+            <p class="hero-description" data-i18n="hero_desc">
                 Especialista en Soporte de TI con más de 6 años de experiencia brindando soporte técnico de nivel 1, 2 y 3, tanto en sitio como en entornos remotos. Sólida experiencia en gestión de tickets, sistemas Windows, Microsoft Office, resolución de problemas de red, operaciones de centros de datos y mantenimiento de servidores, con comunicación eficaz en inglés y español.
             </p>
             <div class="hero-buttons">
-                <a href="#experiencia" class="btn btn-play">
+                <a href="#experiencia" class="btn btn-play" data-i18n="btn_exp">
                     ▶ Ver Experiencia
                 </a>
-                <a href="#contacto" class="btn btn-info">
+                <a href="#contacto" class="btn btn-info" data-i18n="btn_skills">
                     ℹ Habilidades
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- FILA 1: EXPERIENCIA LABORAL (Desde la última versión) -->
+    <!-- FILA 1: EXPERIENCIA LABORAL -->
     <section class="row-container" id="experiencia">
-        <h2 class="row-title">Trayectoria / Episodios Laborales</h2>
+        <h2 class="row-title" data-i18n="row_exp_title">Trayectoria / Episodios Laborales</h2>
         <div class="card-grid">
             
             <!-- Linde Ecuador -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">99% Coincidencia laboral</div>
-                    <div class="card-title">Especialista en Soporte Técnico</div>
-                    <div class="card-subtitle">Linde Ecuador (Quito) · Ago 2024 - Presente</div>
-                    <p class="card-text">Soporte técnico de nivel 2 y 3 para hardware, software, servidores y centros de datos para todo el Ecuador. Gestión de tickets e inventario y comunicación continua en inglés con equipos globales.</p>
+                    <div class="card-header-info" data-i18n="linde_match">99% Coincidencia laboral</div>
+                    <div class="card-title" data-i18n="linde_title">Especialista en Soporte Técnico</div>
+                    <div class="card-subtitle" data-i18n="linde_sub">Linde Ecuador (Quito) · Ago 2024 - Presente</div>
+                    <p class="card-text" data-i18n="linde_text">Soporte técnico de nivel 2 y 3 para hardware, software, servidores y centros de datos para todo el Ecuador. Gestión de tickets e inventario y comunicación continua en inglés con equipos globales.</p>
                 </div>
             </div>
 
             <!-- Fundación Children International -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Rol Paralelo</div>
-                    <div class="card-title">Profesor de Inglés (Tiempo parcial)</div>
-                    <div class="card-subtitle">Fundación Children International (Quito) · Jul 2024 - Jul 2025</div>
-                    <p class="card-text">Enseñanza de inglés a niños y adolescentes, fortaleciendo el dominio del idioma aplicado diariamente en entornos multinacionales.</p>
+                    <div class="card-header-info" data-i18n="children_match">Rol Paralelo</div>
+                    <div class="card-title" data-i18n="children_title">Profesor de Inglés (Tiempo parcial)</div>
+                    <div class="card-subtitle" data-i18n="children_sub">Fundación Children International (Quito) · Jul 2024 - Jul 2025</div>
+                    <p class="card-text" data-i18n="children_text">Enseñanza de inglés a niños y adolescentes, fortaleciendo el dominio del idioma aplicado diariamente en entornos multinacionales.</p>
                 </div>
             </div>
 
             <!-- Yanbal Ecuador -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Experiencia In Situ</div>
-                    <div class="card-title">Soporte Técnico In Situ</div>
-                    <div class="card-subtitle">Yanbal Ecuador (Quito) · May 2023 - Ago 2023</div>
-                    <p class="card-text">Instalación y mantenimiento de hardware y software informático (portátiles, impresoras, servidores). Soporte presencial y remoto a nivel nacional.</p>
+                    <div class="card-header-info" data-i18n="yanbal_match">Experiencia In Situ</div>
+                    <div class="card-title" data-i18n="yanbal_title">Soporte Técnico In Situ</div>
+                    <div class="card-subtitle" data-i18n="yanbal_sub">Yanbal Ecuador (Quito) · May 2023 - Ago 2023</div>
+                    <p class="card-text" data-i18n="yanbal_text">Instalación y mantenimiento de hardware y software informático (portátiles, impresoras, servidores). Soporte presencial y remoto a nivel nacional.</p>
                 </div>
             </div>
 
             <!-- Embajada de México -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Liderazgo TI</div>
-                    <div class="card-title">Jefe del Departamento de Sistemas</div>
-                    <div class="card-subtitle">Embajada de México en Ecuador (Quito) · Dic 2019 - Oct 2022</div>
-                    <p class="card-text">Administración de servidores de datos y sitio web institucional. Desarrollo de software personalizado y soporte técnico presencial.</p>
+                    <div class="card-header-info" data-i18n="embassy_match">Liderazgo TI</div>
+                    <div class="card-title" data-i18n="embassy_title">Jefe del Departamento de Sistemas</div>
+                    <div class="card-subtitle" data-i18n="embassy_sub">Embajada de México en Ecuador (Quito) · Dic 2019 - Oct 2022</div>
+                    <p class="card-text" data-i18n="embassy_text">Administración de servidores de datos y sitio web institucional. Desarrollo de software personalizado y soporte técnico presencial.</p>
                 </div>
             </div>
 
             <!-- Escuela Politécnica Nacional -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Investigación</div>
-                    <div class="card-title">Ayudante de Investigación en Desarrollo Web</div>
-                    <div class="card-subtitle">Escuela Politécnica Nacional (Quito) · Abr 2018 - Jun 2019</div>
-                    <p class="card-text">Desarrollo de aplicaciones web con Python y Flask para el análisis de imágenes médicas. Aplicación de redes neuronales convolucionales (CNN) en mamografías.</p>
+                    <div class="card-header-info" data-i18n="epn_match">Investigación</div>
+                    <div class="card-title" data-i18n="epn_title">Ayudante de Investigación en Desarrollo Web</div>
+                    <div class="card-subtitle" data-i18n="epn_sub">Escuela Politécnica Nacional (Quito) · Abr 2018 - Jun 2019</div>
+                    <p class="card-text" data-i18n="epn_text">Desarrollo de aplicaciones web con Python y Flask para el análisis de imágenes médicas. Aplicación de redes neuronales convolucionales (CNN) en mamografías.</p>
                 </div>
             </div>
 
             <!-- DCA Sistemas -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Inicios / Fundamentos</div>
-                    <div class="card-title">Soporte Técnico IT</div>
-                    <div class="card-subtitle">DCA Sistemas (Quito) · Feb 2017 - Feb 2018</div>
-                    <p class="card-text">Mantenimiento preventivo y correctivo de hardware. Instalación y configuración de componentes de software y hardware.</p>
+                    <div class="card-header-info" data-i18n="dca_match">Inicios / Fundamentos</div>
+                    <div class="card-title" data-i18n="dca_title">Soporte Técnico IT</div>
+                    <div class="card-subtitle" data-i18n="dca_sub">DCA Sistemas (Quito) · Feb 2017 - Feb 2018</div>
+                    <p class="card-text" data-i18n="dca_text">Mantenimiento preventivo y correctivo de hardware. Instalación y configuración de componentes de software y hardware.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- FILA 2: EDUCACIÓN (Desde el diseño previo) -->
+    <!-- FILA 2: EDUCACIÓN -->
     <section class="row-container">
-        <h2 class="row-title">Formación Académica (Temporadas de Estudio)</h2>
+        <h2 class="row-title" data-i18n="row_edu_title">Formación Académica (Temporadas de Estudio)</h2>
         <div class="card-grid">
             
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Grado Universitario</div>
-                    <div class="card-title">Ingeniería en Sistemas</div>
-                    <div class="card-subtitle">Universidad Israel · 2023</div>
-                    <p class="card-text">Formación superior enfocada en el diseño, desarrollo, administración y seguridad de sistemas informáticos empresariales.</p>
+                    <div class="card-header-info" data-i18n="edu1_match">Grado Universitario</div>
+                    <div class="card-title" data-i18n="edu1_title">Ingeniería en Sistemas</div>
+                    <div class="card-subtitle" data-i18n="edu1_sub">Universidad Israel · 2023</div>
+                    <p class="card-text" data-i18n="edu1_text">Formación superior enfocada en el diseño, desarrollo, administración y seguridad de sistemas informáticos empresariales.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-body">
-                    <div class="card-header-info">Título Técnico</div>
-                    <div class="card-title">Tecnología en Análisis de Sistemas Informáticos</div>
-                    <div class="card-subtitle">Escuela Politécnica Nacional (EPN) · 2021</div>
-                    <p class="card-text">Especialización en análisis y desarrollo de soluciones tecnológicas eficientes para entornos de alta exigencia.</p>
+                    <div class="card-header-info" data-i18n="edu2_match">Título Técnico</div>
+                    <div class="card-title" data-i18n="edu2_title">Tecnología en Análisis de Sistemas Informáticos</div>
+                    <div class="card-subtitle" data-i18n="edu2_sub">Escuela Politécnica Nacional (EPN) · 2021</div>
+                    <p class="card-text" data-i18n="edu2_text">Especialización en análisis y desarrollo de soluciones tecnológicas eficientes para entornos de alta exigencia.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- FILA 3: HABILIDADES TÉCNICAS Y IDIOMAS (Desde el diseño previo) -->
+    <!-- FILA 3: HABILIDADES TÉCNICAS Y IDIOMAS -->
     <section class="row-container" id="contacto">
-        <h2 class="row-title">Habilidades y Tecnologías Destacadas (Tags)</h2>
+        <h2 class="row-title" data-i18n="row_skills_title">Habilidades y Tecnologías Destacadas (Tags)</h2>
     </section>
-    <div class="skills-container">
-        <div class="skill-badge">Soporte Técnico Nivel 1, 2 y 3</div>
-        <div class="skill-badge">Help Desk & Service Desk</div>
-        <div class="skill-badge">Jira & ServiceNow</div>
-        <div class="skill-badge">Sistemas Windows (7, 10, 11)</div>
-        <div class="skill-badge">Microsoft Office 365</div>
-        <div class="skill-badge">Active Directory</div>
-        <div class="skill-badge">Redes y VPN</div>
-        <div class="skill-badge">Data Center & Servidores</div>
-        <div class="skill-badge">Python / Flask (Básico-Intermedio)</div>
-        <div class="skill-badge">Español (Nativo)</div>
-        <div class="skill-badge">Inglés Avanzado C1 (Global Support)</div>
+    <div class="skills-container" id="skillsContainer">
+        <div class="skill-badge" data-i18n="skill_1">Soporte Técnico Nivel 1, 2 y 3</div>
+        <div class="skill-badge" data-i18n="skill_2">Help Desk & Service Desk</div>
+        <div class="skill-badge" data-i18n="skill_3">Jira & ServiceNow</div>
+        <div class="skill-badge" data-i18n="skill_4">Sistemas Windows (7, 10, 11)</div>
+        <div class="skill-badge" data-i18n="skill_5">Microsoft Office 365</div>
+        <div class="skill-badge" data-i18n="skill_6">Active Directory</div>
+        <div class="skill-badge" data-i18n="skill_7">Redes y VPN</div>
+        <div class="skill-badge" data-i18n="skill_8">Data Center & Servidores</div>
+        <div class="skill-badge" data-i18n="skill_9">Python / Flask (Básico-Intermedio)</div>
+        <div class="skill-badge" data-i18n="skill_10">Español (Nativo)</div>
+        <div class="skill-badge" data-i18n="skill_11">Inglés Avanzado C1 (Global Support)</div>
     </div>
 
     <!-- FOOTER -->
     <footer>
-        <p>¿Listo para contratar al próximo protagonista de tu equipo de TI?</p>
-        <p style="margin-top: 10px;">© 2026 - Perfil Profesional adaptado al estilo Netflix.</p>
+        <p data-i18n="footer_p1">¿Listo para contratar al próximo protagonista de tu equipo de TI?</p>
+        <p style="margin-top: 10px;" data-i18n="footer_p2">© 2026 - Perfil Profesional adaptado al estilo Netflix.</p>
     </footer>
 
+    <!-- SCRIPT DE TRADUCCIÓN -->
+    <script>
+        const translations = {
+            es: {
+                nav_role: "Soporte TI / Bilingüe",
+                hero_badge: "Temporada 6+ · Perfil Profesional",
+                hero_title: "Especialista en Soporte Técnico e Infraestructura",
+                hero_desc: "Especialista en Soporte de TI con más de 6 años de experiencia brindando soporte técnico de nivel 1, 2 y 3, tanto en sitio como en entornos remotos. Sólida experiencia en gestión de tickets, sistemas Windows, Microsoft Office, resolución de problemas de red, operaciones de centros de datos y mantenimiento de servidores, con comunicación eficaz en inglés y español.",
+                btn_exp: "▶ Ver Experiencia",
+                btn_skills: "ℹ Habilidades",
+                row_exp_title: "Trayectoria / Episodios Laborales",
+                
+                linde_match: "99% Coincidencia laboral",
+                linde_title: "Especialista en Soporte Técnico",
+                linde_sub: "Linde Ecuador (Quito) · Ago 2024 - Presente",
+                linde_text: "Soporte técnico de nivel 2 y 3 para hardware, software, servidores y centros de datos para todo el Ecuador. Gestión de tickets e inventario y comunicación continua en inglés con equipos globales.",
+                
+                children_match: "Rol Paralelo",
+                children_title: "Profesor de Inglés (Tiempo parcial)",
+                children_sub: "Fundación Children International (Quito) · Jul 2024 - Jul 2025",
+                children_text: "Enseñanza de inglés a niños y adolescentes, fortaleciendo el dominio del idioma aplicado diariamente en entornos multinacionales.",
+                
+                yanbal_match: "Experiencia In Situ",
+                yanbal_title: "Soporte Técnico In Situ",
+                yanbal_sub: "Yanbal Ecuador (Quito) · May 2023 - Ago 2023",
+                yanbal_text: "Instalación y mantenimiento de hardware y software informático (portátiles, impresoras, servidores). Soporte presencial y remoto a nivel nacional.",
+                
+                embassy_match: "Liderazgo TI",
+                embassy_title: "Jefe del Departamento de Sistemas",
+                embassy_sub: "Embajada de México en Ecuador (Quito) · Dic 2019 - Oct 2022",
+                embassy_text: "Administración de servidores de datos y sitio web institucional. Desarrollo de software personalizado y soporte técnico presencial.",
+                
+                epn_match: "Investigación",
+                epn_title: "Ayudante de Investigación en Desarrollo Web",
+                epn_sub: "Escuela Politécnica Nacional (Quito) · Abr 2018 - Jun 2019",
+                epn_text: "Desarrollo de aplicaciones web con Python y Flask para el análisis de imágenes médicas. Aplicación de redes neuronales convolucionales (CNN) en mamografías.",
+                
+                dca_match: "Inicios / Fundamentos",
+                dca_title: "Soporte Técnico IT",
+                dca_sub: "DCA Sistemas (Quito) · Feb 2017 - Feb 2018",
+                dca_text: "Mantenimiento preventivo y correctivo de hardware. Instalación y configuración de componentes de software y hardware.",
+                
+                row_edu_title: "Formación Académica (Temporadas de Estudio)",
+                
+                edu1_match: "Grado Universitario",
+                edu1_title: "Ingeniería en Sistemas",
+                edu1_sub: "Universidad Israel · 2023",
+                edu1_text: "Formación superior enfocada en el diseño, desarrollo, administración y seguridad de sistemas informáticos empresariales.",
+                
+                edu2_match: "Título Técnico",
+                edu2_title: "Tecnología en Análisis de Sistemas Informáticos",
+                edu2_sub: "Escuela Politécnica Nacional (EPN) · 2021",
+                edu2_text: "Especialización en análisis y desarrollo de soluciones tecnológicas eficientes para entornos de alta exigencia.",
+                
+                row_skills_title: "Habilidades y Tecnologías Destacadas (Tags)",
+                skill_1: "Soporte Técnico Nivel 1, 2 y 3",
+                skill_2: "Help Desk & Service Desk",
+                skill_3: "Jira & ServiceNow",
+                skill_4: "Sistemas Windows (7, 10, 11)",
+                skill_5: "Microsoft Office 365",
+                skill_6: "Active Directory",
+                skill_7: "Redes y VPN",
+                skill_8: "Data Center & Servidores",
+                skill_9: "Python / Flask (Básico-Intermedio)",
+                skill_10: "Español (Nativo)",
+                skill_11: "Inglés Avanzado C1 (Global Support)",
+                
+                footer_p1: "¿Listo para contratar al próximo protagonista de tu equipo de TI?",
+                footer_p2: "© 2026 - Perfil Profesional adaptado al estilo Netflix."
+            },
+            en: {
+                nav_role: "IT Support / Bilingual",
+                hero_badge: "Season 6+ · Professional Profile",
+                hero_title: "Technical Support & Infrastructure Specialist",
+                hero_desc: "IT Support Specialist with over 6 years of experience providing level 1, 2, and 3 technical support in both on-site and remote environments. Strong background in ticket management, Windows systems, Microsoft Office, network troubleshooting, data center operations, and server maintenance, with effective communication in English and Spanish.",
+                btn_exp: "▶ View Experience",
+                btn_skills: "ℹ Skills",
+                row_exp_title: "Career Path / Work Episodes",
+                
+                linde_match: "99% Job Match",
+                linde_title: "Technical Support Specialist",
+                linde_sub: "Linde Ecuador (Quito) · Aug 2024 - Present",
+                linde_text: "Level 2 and 3 technical support for hardware, software, servers, and data centers across Ecuador. Ticket and inventory management, with continuous English communication with global teams.",
+                
+                children_match: "Parallel Role",
+                children_title: "English Teacher (Part-time)",
+                children_sub: "Children International Foundation (Quito) · Jul 2024 - Jul 2025",
+                children_text: "Teaching English to children and adolescents, strengthening language proficiency applied daily in multinational environments.",
+                
+                yanbal_match: "On-Site Experience",
+                yanbal_title: "On-Site Technical Support",
+                yanbal_sub: "Yanbal Ecuador (Quito) · May 2023 - Aug 2023",
+                yanbal_text: "Installation and maintenance of IT hardware and software (laptops, printers, servers). On-site and remote support nationwide.",
+                
+                embassy_match: "IT Leadership",
+                embassy_title: "Head of Systems Department",
+                embassy_sub: "Embassy of Mexico in Ecuador (Quito) · Dec 2019 - Oct 2022",
+                embassy_text: "Administration of data servers and institutional website. Custom software development and on-site technical support.",
+                
+                epn_match: "Research",
+                epn_title: "Web Development Research Assistant",
+                epn_sub: "Escuela Politécnica Nacional (Quito) · Apr 2018 - Jun 2019",
+                epn_text: "Development of web applications with Python and Flask for medical image analysis. Application of convolutional neural networks (CNN) in mammograms.",
+                
+                dca_match: "Beginnings / Fundamentals",
+                dca_title: "IT Technical Support",
+                dca_sub: "DCA Sistemas (Quito) · Feb 2017 - Feb 2018",
+                dca_text: "Preventive and corrective hardware maintenance. Installation and configuration of software and hardware components.",
+                
+                row_edu_title: "Academic Background (Study Seasons)",
+                
+                edu1_match: "University Degree",
+                edu1_title: "Systems Engineering",
+                edu1_sub: "Universidad Israel · 2023",
+                edu1_text: "Higher education focused on the design, development, administration, and security of enterprise IT systems.",
+                
+                edu2_match: "Technical Degree",
+                edu2_title: "Computer Systems Analysis Technology",
+                edu2_sub: "Escuela Politécnica Nacional (EPN) · 2021",
+                edu2_text: "Specialization in the analysis and development of efficient technological solutions for high-demand environments.",
+                
+                row_skills_title: "Featured Skills & Technologies (Tags)",
+                skill_1: "Level 1, 2 & 3 Technical Support",
+                skill_2: "Help Desk & Service Desk",
+                skill_3: "Jira & ServiceNow",
+                skill_4: "Windows Systems (7, 10, 11)",
+                skill_5: "Microsoft Office 365",
+                skill_6: "Active Directory",
+                skill_7: "Networks & VPN",
+                skill_8: "Data Center & Servers",
+                skill_9: "Python / Flask (Basic-Intermediate)",
+                skill_10: "Spanish (Native)",
+                skill_11: "Advanced English C1 (Global Support)",
+                
+                footer_p1: "Ready to hire the next star of your IT team?",
+                footer_p2: "© 2026 - Professional Profile adapted to the Netflix style."
+            }
+        };
+
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            const btn = document.getElementById('langToggle');
+            
+            // Actualizar el texto del botón según el idioma actual
+            btn.innerHTML = currentLang === 'es' ? '🌐 EN' : '🌐 ES';
+            document.documentElement.lang = currentLang;
+
+            // Traducir todos los elementos con el atributo data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
