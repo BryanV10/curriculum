@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan | IT Support & Administrative Operations Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --netflix-red: #E50914;
+            --netflix-black: #141414;
+            --netflix-darkgray: #1f1f1f;
+            --netflix-lightgray: #808080;
+            --netflix-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--netflix-black);
+            color: var(--netflix-white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar estilo Netflix */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: var(--netflix-red);
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Banner Principal / Hero */
+        .hero {
+            height: 90vh;
+            position: relative;
+            background: linear-gradient(to top, var(--netflix-black) 10%, rgba(20,20,20,0.4) 50%, rgba(20,20,20,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 50px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            z-index: 2;
+        }
+
+        .badge-series {
+            background-color: var(--netflix-red);
+            color: var(--netflix-white);
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #e5e5e5;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-play {
+            background-color: var(--netflix-white);
+            color: var(--netflix-black);
+        }
+
+        .btn-play:hover {
+            opacity: 0.8;
+        }
+
+        .btn-info {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: var(--netflix-white);
+        }
+
+        .btn-info:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+        }
+
+        /* Secciones y Carruseles */
+        .row-container {
+            padding: 20px 50px;
+            margin-bottom: 20px;
+        }
+
+        .row-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #e5e5e5;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--netflix-darkgray);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-header-info {
+            font-size: 12px;
+            color: #46d369;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--netflix-lightgray);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .card-text-list {
+            font-size: 0.83rem;
+            color: #d1d1d1;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+
+        .card-text-list li {
+            margin-bottom: 6px;
+        }
+
+        /* Skills y Competencias */
+        .skills-section {
+            padding: 20px 50px;
+        }
+
+        .skills-category-title {
+            font-size: 1.1rem;
+            color: var(--netflix-red);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .skill-badge {
+            background-color: var(--netflix-darkgray);
+            border: 1px solid #333;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--netflix-lightgray);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            nav, .row-container, .skills-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            nav {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#" class="logo">NETFLIX CV</a>
+        <div class="nav-right">
+            <div class="nav-profile">
+                <span>BRYAN · IT & Ops</span>
+                <div style="background:var(--netflix-red); width:30px; height:30px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:bold;">IT</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / PROFESSIONAL SUMMARY -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge-series">Executive Profile · Season Complete</span>
+            <h1 class="hero-title">IT Support & Administrative Operations Professional</h1>
+            <p class="hero-description" id="summaryText">
+                IT Support and Administrative Operations professional with experience supporting multinational and institutional environments, managing vendors and contractors, coordinating procurement processes, maintaining assets and inventories, preparing documentation and reports, and providing customer service. Experienced in coordinating national and international projects, working with global teams in English, managing operational requirements, and following established procedures and internal controls. Strong background in data center and facility-related operations, equipment management, incident documentation, ticket management, and cost optimization. Native Spanish speaker with C1 Advanced English.
+            </p>
+            <div class="hero-buttons">
+                <a href="#experiencia" class="btn btn-play">▶ <span id="btnExpText">View Experience</span></a>
+                <a href="#competencias" class="btn btn-info">ℹ <span id="btnCompText">Competencies</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CORE COMPETENCIES -->
+    <section class="row-container" id="competencias">
+        <h2 class="row-title" id="coreCompTitle">CORE COMPETENCIES</h2>
+        <div class="skills-container">
+            <div class="skill-badge">Administrative Support</div>
+            <div class="skill-badge">Operations Coordination</div>
+            <div class="skill-badge">Vendor & Contractor Management</div>
+            <div class="skill-badge">Procurement & Quotations</div>
+            <div class="skill-badge">Purchase Orders & Invoicing</div>
+            <div class="skill-badge">Data Analysis & Reporting</div>
+            <div class="skill-badge">Asset & Inventory Management</div>
+            <div class="skill-badge">Customer Service</div>
+            <div class="skill-badge">Incident & Ticket Management</div>
+            <div class="skill-badge">Project Coordination</div>
+            <div class="skill-badge">Documentation & Record Keeping</div>
+            <div class="skill-badge">Cost Optimization</div>
+            <div class="skill-badge">Microsoft Office</div>
+            <div class="skill-badge">IT Infrastructure</div>
+            <div class="skill-badge">Data Center Operations</div>
+            <div class="skill-badge">Facilities Coordination</div>
+            <div class="skill-badge">Internal Controls & Audits</div>
+            <div class="skill-badge">English-Spanish Communication</div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section class="row-container" id="experiencia">
+        <h2 class="row-title" id="expTitle">PROFESSIONAL EXPERIENCE</h2>
+        <div class="card-grid">
+            
+            <!-- LINDE -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Multinational organization | ~125 employees</div>
+                    <div class="card-title">LINDE – Ecuador</div>
+                    <div class="card-subtitle">IT Support & Infrastructure Specialist | Aug 2024 - Present</div>
+                    <ul class="card-text-list">
+                        <li>Provided nationwide IT support and operational assistance to approximately 125 employees, managing technical requests and tickets in coordination with local and global IT teams.</li>
+                        <li>Coordinated multiple infrastructure and operational projects involving internal departments, external vendors, contractors, and international teams.</li>
+                        <li>Managed a nationwide Internet Service Provider transition project, coordinating requirements, vendors, implementation activities, and operational follow-up.</li>
+                        <li>Coordinated the implementation of an outsourced printing service, including vendor quotations, commercial evaluation, bidding/selection processes, approvals, implementation, and ongoing vendor coordination.</li>
+                        <li>Managed the Juniper network implementation project across 11 branches throughout Ecuador, from purchase order generation and equipment reception through delivery tracking, implementation scheduling, deployment, and project completion.</li>
+                        <li>Coordinated implementation activities with a European technical team, communicating and collaborating in English throughout the project.</li>
+                        <li>Supported the deployment and administration of Juniper network infrastructure, including switches, wireless access points, Wi-Fi profiles, and wired network services.</li>
+                        <li>Managed operational requirements for the construction and implementation of IT infrastructure for a new Novacero industrial plant, including communication links, IT operational activities, and coordination with global teams and internal departments.</li>
+                        <li>Coordinated a nationwide SIP Trunk telephony implementation across 11 Ecuadorian branches, including deployment and management of physical telephony gateways.</li>
+                        <li>Coordinated computer equipment renewal projects, including vendor management, budgeting, procurement, equipment replacement, and disposition/sale of retired equipment.</li>
+                        <li>Managed mobile device renewal processes in coordination with suppliers and global teams, including budgeting, procurement, replacement, and disposal of previous equipment.</li>
+                        <li>Coordinated physical network cabling renewal and infrastructure-related activities.</li>
+                        <li>Maintained continuous communication with telecommunications, Internet, IT supplies, office supplies, and other service providers.</li>
+                        <li>Reviewed and processed supplier invoices, quotations, purchase requests, approvals, and procurement documentation.</li>
+                        <li>Managed inventory, assets, consumables, equipment assignments, equipment disposal, and stock records.</li>
+                        <li>Performed regular review and maintenance coordination for IT-related facilities and infrastructure, including data center equipment, servers, air conditioning, and related systems.</li>
+                        <li>Coordinated with Administration, Procurement, Sales, Human Resources, SHEQ/Quality, and other departments to ensure operational requirements were addressed.</li>
+                        <li>Supported internal audits and interactions with external/state regulatory entities by providing requested documentation and operational information.</li>
+                        <li>Managed national and global IT tickets, ensuring appropriate documentation, follow-up, escalation, and resolution.</li>
+                        <li>Identified opportunities to reduce operational costs involving vendors, servers, licenses, technologies, and IT services.</li>
+                        <li>Supported continuous improvement initiatives focused on operational efficiency, cost reduction, and effective use of resources.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CHILDREN INTERNATIONAL -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Parallel Role (Part-Time)</div>
+                    <div class="card-title">CHILDREN INTERNATIONAL FOUNDATION – Quito</div>
+                    <div class="card-subtitle">English Teacher | Jul 2024 - Jul 2025</div>
+                    <ul class="card-text-list">
+                        <li>Taught English to children and adolescents, strengthening language proficiency applied daily in multinational environments.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- YANBAL -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Enterprise Environment | ~334 employees</div>
+                    <div class="card-title">YANBAL – Ecuador</div>
+                    <div class="card-subtitle">IT Support Specialist | May 2023 - Aug 2023</div>
+                    <ul class="card-text-list">
+                        <li>Provided technical support and customer service to employees throughout Ecuador.</li>
+                        <li>Managed IT tickets, documented incidents, followed up on requests, and coordinated issue resolution.</li>
+                        <li>Maintained records of IT assets, equipment stock, and retired/surplus inventory.</li>
+                        <li>Supported asset control and inventory management activities.</li>
+                        <li>Maintained continuous communication with users and internal teams to coordinate technical assistance and resolve operational requirements.</li>
+                        <li>Assisted with equipment allocation, inventory control, and tracking of IT resources.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- EMBASSY OF MEXICO -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Institutional environment | ~20 employees</div>
+                    <div class="card-title">EMBASSY OF MEXICO – Ecuador</div>
+                    <div class="card-subtitle">IT Support / Systems Specialist | Dec 2019 - Oct 2022</div>
+                    <ul class="card-text-list">
+                        <li>Provided technical and administrative support to institutional personnel and users.</li>
+                        <li>Developed a web-based ticket management system from the ground up to centralize service requests, improve documentation, and facilitate incident tracking.</li>
+                        <li>Supported administrative activities and direct customer/user assistance.</li>
+                        <li>Managed technical incidents, documented requests, and provided follow-up to users.</li>
+                        <li>Developed customized software solutions to address institutional operational requirements.</li>
+                        <li>Supported the administration and maintenance of institutional servers and website infrastructure.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RESEARCH ASSISTANT -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Artificial Intelligence Research Project</div>
+                    <div class="card-title">RESEARCH ASSISTANT</div>
+                    <div class="card-subtitle">Escuela Politécnica Nacional | Apr 2018 - Jun 2019</div>
+                    <ul class="card-text-list">
+                        <li>Participated in the development of an artificial intelligence system for the early detection of breast cancer.</li>
+                        <li>Supported data processing, analysis, experimentation, and development activities associated with the research project.</li>
+                        <li>Worked with technical documentation, data, and software development processes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DCA SISTEMAS -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Technology training organization | ~20 employees</div>
+                    <div class="card-title">DCA SISTEMAS</div>
+                    <div class="card-subtitle">IT Support / Technical Assistant | Feb 2017 - Feb 2018</div>
+                    <ul class="card-text-list">
+                        <li>Provided customer service and technical assistance to clients.</li>
+                        <li>Supported hardware and software installation, troubleshooting, maintenance, and configuration.</li>
+                        <li>Assisted clients with computer-related issues and provided technical guidance.</li>
+                        <li>Coordinated technical requirements and maintained communication with customers throughout service activities.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="row-container">
+        <h2 class="row-title" id="eduTitle">EDUCATION</h2>
+        <div class="card-grid">
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Bachelor's Degree</div>
+                    <div class="card-title">Universidad Israel</div>
+                    <div class="card-subtitle">Systems Engineering | 2023</div>
+                    <p class="card-text-list" style="list-style: none; padding-left: 0; color: #d1d1d1;">Higher education focused on the design, development, administration, and security of enterprise computer systems.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header-info">Technical Degree</div>
+                    <div class="card-title">Escuela Politécnica Nacional (EPN)</div>
+                    <div class="card-subtitle">Technology in Computer Systems Analysis | 2021</div>
+                    <p class="card-text-list" style="list-style: none; padding-left: 0; color: #d1d1d1;">Specialization in the analysis and development of efficient technological solutions for high-demand environments.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TECHNICAL & ADMINISTRATIVE SKILLS -->
+    <section class="skills-section">
+        <h2 class="row-title" id="skillsTitle">TECHNICAL & ADMINISTRATIVE SKILLS</h2>
+        
+        <div class="skills-category-title">Administrative & Operations</div>
+        <div class="skills-container">
+            <div class="skill-badge">Administrative support</div>
+            <div class="skill-badge">Documentation and record keeping</div>
+            <div class="skill-badge">Data entry and data management</div>
+            <div class="skill-badge">Report preparation</div>
+            <div class="skill-badge">Procurement coordination</div>
+            <div class="skill-badge">Purchase orders</div>
+            <div class="skill-badge">Quotations and vendor evaluation</div>
+            <div class="skill-badge">Invoice processing</div>
+            <div class="skill-badge">Inventory management</div>
+            <div class="skill-badge">Asset management</div>
+            <div class="skill-badge">Contractor and vendor coordination</div>
+            <div class="skill-badge">Microsoft Office</div>
+            <div class="skill-badge">Microsoft Word</div>
+            <div class="skill-badge">Microsoft Excel</div>
+            <div class="skill-badge">Microsoft Outlook</div>
+            <div class="skill-badge">Microsoft Teams</div>
+        </div>
+
+        <div class="skills-category-title">IT & Infrastructure</div>
+        <div class="skills-container">
+            <div class="skill-badge">Windows</div>
+            <div class="skill-badge">Microsoft 365</div>
+            <div class="skill-badge">Active Directory</div>
+            <div class="skill-badge">Networking</div>
+            <div class="skill-badge">Wi-Fi</div>
+            <div class="skill-badge">Switches</div>
+            <div class="skill-badge">Servers</div>
+            <div class="skill-badge">Data Centers</div>
+            <div class="skill-badge">IT Asset Management</div>
+            <div class="skill-badge">Ticketing Systems</div>
+            <div class="skill-badge">IT Service Management</div>
+        </div>
+
+        <div class="skills-category-title">Project & Operations</div>
+        <div class="skills-container">
+            <div class="skill-badge">Project coordination</div>
+            <div class="skill-badge">Implementation planning</div>
+            <div class="skill-badge">Vendor management</div>
+            <div class="skill-badge">Budget coordination</div>
+            <div class="skill-badge">Cost optimization</div>
+            <div class="skill-badge">Operational reporting</div>
+            <div class="skill-badge">Internal audits</div>
+            <div class="skill-badge">Cross-functional coordination</div>
+        </div>
+    </section>
+
+    <!-- LANGUAGES & ADDITIONAL INFO -->
+    <section class="row-container">
+        <h2 class="row-title" id="infoTitle">LANGUAGES & ADDITIONAL INFORMATION</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">Languages</div>
+                    <ul class="card-text-list">
+                        <li>Spanish: Native</li>
+                        <li>English: C1 – Advanced / Professional Working Proficiency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">Additional Information</div>
+                    <ul class="card-text-list">
+                        <li>Experience working with multinational and institutional organizations.</li>
+                        <li>Experience coordinating projects involving local and international teams.</li>
+                        <li>Professional experience communicating in English with international technical teams.</li>
+                        <li>Experience working with vendors, contractors, internal departments, and external stakeholders.</li>
+                        <li>Available to work in structured operational environments and follow established procedures.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p id="footerText">© 2026 - Professional Profile adapted to the Netflix style.</p>
+    </footer>
+
+</body>
+</html>
